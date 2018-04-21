@@ -6,6 +6,7 @@ Cross-Origin Resource Sharing 為跨來源資源共用，這讓你能夠在不�
 
 * [安裝方式](#安裝方式)
 * [使用方式](#使用方式)
+	* [預設配置](#預設配置)
 
 # 安裝方式
 
@@ -46,12 +47,10 @@ func main() {
 	m := mego.New()
 	// 跨來源資源共用中介軟體也能夠僅套用到單一路由，
 	// 這令你能夠更彈性地替不同路由配置不同設定。
-	m.Get("/", cors.New(&cors.Options{
-		AllowOrigins: []string{"https://*.example.com"},
-		AllowMethods: []string{"GET", "POST"},
-		AllowHeaders: []string{"Origin"},
-	}), func() string {
-		return "Hello, world!"
+	m.GET("/", cors.New(&cors.Options{
+		// ...
+	}), func() {
+		// ...
 	})
 	m.Run()
 }
